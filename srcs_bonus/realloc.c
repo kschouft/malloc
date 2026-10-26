@@ -93,12 +93,14 @@ void*   realloc_bonus(void *ptr, size_t size, char env_flag)
     if (size == block->size)
     {
         block->req_size = req_size;
+        block->timestamp = time(NULL);
         return (ptr);
     }
     if (size < block->size)
     {
         split_block(block, size);
         block->req_size = req_size;
+        block->timestamp = time(NULL);
         return (ptr);
     }
     else if (block->next && block->next->free && (block->size + block->next->size + sizeof(t_block) >= size) 
@@ -106,6 +108,7 @@ void*   realloc_bonus(void *ptr, size_t size, char env_flag)
     {
         void *ret = realloc_merge(block, size);
         block->req_size = req_size;
+        block->timestamp = time(NULL);
         return (ret);
     }
     void* new_ptr = malloc_bonus(req_size, true);

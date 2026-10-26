@@ -111,6 +111,7 @@ void    *malloc_bonus(size_t size, bool flag)
         print_malloc(req_size, ret);
     t_block* block = (t_block*)((char*)ret - sizeof(t_block));
     block->req_size = req_size;
+    block->timestamp = time(NULL);
     if (flag == false)
         pthread_mutex_unlock(&mutex);
     return (ret);    

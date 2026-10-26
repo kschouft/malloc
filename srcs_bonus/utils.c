@@ -177,6 +177,7 @@ size_t show_page_blocks_ex(t_page *page)
             ft_putstr(" : ");
             ft_putnbr(block->req_size);
             ft_putstr(" bytes\n");
+            print_allocation_time(block);
             size = block->req_size;
             if (size > 24)
                 size = 24;

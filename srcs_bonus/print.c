@@ -51,3 +51,22 @@ void    print_page_type_debug(t_type type)
     else
         ft_putstr("[DEBUG] page type = LARGE\n");
 }
+
+void print_allocation_time(t_block *block)
+{
+    time_t timestamp;
+    int hour;
+    int minute;
+    int second;
+    timestamp = block->timestamp;
+    hour = (timestamp % 86400) / 3600;
+    minute = (timestamp % 3600) / 60;
+    second = timestamp % 60;
+    ft_putstr("Allocation time : ");
+    ft_putnbr(hour);
+    ft_putchar(':');
+    ft_putnbr(minute);
+    ft_putchar(':');
+    ft_putnbr(second);
+    ft_putstr(" UTC\n");
+}

@@ -46,6 +46,8 @@ int main()
     // char* ptr4 = malloc(24);
     // free(ptr2);
     // free(ptr3);
+    char* ptr1 = malloc(124);
+    sleep(10);
     char* ptr4 = malloc(24);
     ptr4 = strcpy(ptr4, "Hello World!");
     show_alloc_mem();

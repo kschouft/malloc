@@ -18,6 +18,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <pthread.h>
+#include <time.h>
 #include "libft.h"
 #define PAGE_SIZE (sysconf(_SC_PAGESIZE))
 #define TINY_SIZE (PAGE_SIZE * 4)
@@ -45,9 +46,9 @@ typedef struct  s_block
     size_t          size;
     bool            free;
     size_t          req_size;
+    time_t          timestamp;
     struct s_block  *next;
     struct s_block  *prev;
-    char            padding[8];
 }               t_block;
 
 typedef struct s_types
@@ -97,3 +98,4 @@ void    print_allignated_size(size_t size);
 void    print_debug_addr(void* ret);
 void    print_malloc(size_t size, void* ret);
 void    print_page_type_debug(t_type type);
+void    print_allocation_time(t_block *block);
